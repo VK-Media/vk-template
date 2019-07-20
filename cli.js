@@ -27,7 +27,9 @@ const run = async () => {
 		}
 
 		if (fs.existsSync(newDirectory)) {
-			cloningStatus.fail("A folder with the specified name already exists.");
+			cloningStatus.fail(
+				"A folder with the specified name already exists."
+			);
 			process.exit(1);
 		}
 
@@ -50,7 +52,9 @@ const run = async () => {
 		npmInstallStatus.succeed("Installed dependencies.");
 
 		if (shell.which("code") && answer.vsc) {
-			const vscStatus = ora("Opening new project in Visual Studio Code...").start();
+			const vscStatus = ora(
+				"Opening new project in Visual Studio Code..."
+			).start();
 
 			shell.exec(`code ${newDirectory}`);
 			vscStatus.succeed("Opened new project in Visual Studio Code.");
@@ -58,7 +62,9 @@ const run = async () => {
 
 		console.log("\n");
 		console.log(
-			chalk.green("The project has been successfully created, run the following commands to get started:")
+			chalk.green(
+				"The project has been successfully created, run the following commands to get started:"
+			)
 		);
 		console.log(chalk.blue("cd "), answer.name);
 		console.log(chalk.blue("npm "), "start");
